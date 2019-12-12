@@ -4,6 +4,7 @@ import { Ingredient } from '../shared/ingrdient.model';
 
 export class ShoppingListService {
     ingredientsChanged = new Subject<Ingredient[]>();
+    startedEditing = new Subject<number>();
     
     private ingredients: Ingredient[] = [
         new Ingredient("Apple", 5),
@@ -12,6 +13,10 @@ export class ShoppingListService {
 
     getIngredients() {
         return this.ingredients.slice();
+    }
+
+    getIngredient(index) {
+        return this.ingredients[index];
     }
     
     addIngredient(ingredient: Ingredient) {
@@ -25,5 +30,15 @@ export class ShoppingListService {
         // } this approach generates unnecessary event emissions
         this.ingredients.push(...ingredients);
         this.ingredientsChanged.next(this.ingredients.slice());
-    } 
+    }
+    
+    updateIngredient(index: number, newIngredient: Ingredient) {
+        this.ingredients[index] = newIngredient;
+        this.ingredientsChanged.next(this.ingredients.slice());
+    }
+
+    deleteIngredient(index: number) {
+        this.ingredients.splice(index, 1);
+        this.ingredientsChanged.next(this.ingredients.slice());
+    }
 }
