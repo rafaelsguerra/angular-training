@@ -1,7 +1,13 @@
-<div class="backdrop" (click)="onClose()"></div>
-<div class="alert-box">
-  <p>{{ message }}</p>
-  <div class="alert-box-actions">
-    <button class="btn btn-primary" (click)="onClose()">Close</button>
+<div class="backdrop" (click)="onClose()">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"> <button type="button" class="close" (click)="onClose()"> &times; </button>
+        <h4 class="modal-title" id="myModalLabel">An error ocurred.</h4>
+      </div>
+      <div class="modal-body">{{ message }}</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="onClose()">Close </button>
+      </div>
+    </div>
   </div>
 </div>

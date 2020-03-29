@@ -1,3 +1,4 @@
+<app-alteration-alert *ngIf='alterationAlert' (closeModal)='onHandleAlteration()'>TO AQUI</app-alteration-alert>
 <div class="row">
   <div class="col-xs-12">
     <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">

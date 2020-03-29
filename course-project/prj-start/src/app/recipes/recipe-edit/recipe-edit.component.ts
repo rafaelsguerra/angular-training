@@ -15,6 +15,7 @@ export class RecipeEditComponent implements OnInit {
   id: number;
   editMode = false;
   recipeForm: FormGroup;
+  alterationAlert = false;
 
   get controls() { // a getter!
     return (<FormArray>this.recipeForm.get('ingredients')).controls;
@@ -63,6 +64,11 @@ export class RecipeEditComponent implements OnInit {
     } else {
       this.recipeService.addRecipe(this.recipeForm.value);
     }
+    this.alterationAlert = true;
+  }
+
+  onHandleAlteration() {
+    this.alterationAlert = false;
     this.onCancel();
   }
   
